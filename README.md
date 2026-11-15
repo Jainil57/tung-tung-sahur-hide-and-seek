@@ -1,11 +1,19 @@
 # 🥁 Tung Tung Sahur: Hide & Seek
 
+![Tung Tung Sahur: Hide & Seek](docs/thumbnail.png)
+
 *Tung... tung... tung...* You hear him before you see him.
 
 A **3D first-person multiplayer horror game** made in Godot 4 at **Hack Club Jakarta**.
 You and up to 4 friends are trapped in a dark house with **Tung Tung Sahur**, and he hunts by
 **sound**. Find the hidden **takjil** scattered around the house, unlock the front door and escape
 before he catches everyone.
+
+## 📸 Screenshots
+
+| He's right there... | Upstairs hallway |
+|---|---|
+| ![Tung Tung Sahur winding up his bat in a bedroom](docs/screenshot0.png) | ![Tung Tung Sahur at the end of the upstairs hallway](docs/screenshot2.png) |
 
 ## 🎤 Your voice is a weapon (against you)
 
