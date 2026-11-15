@@ -71,6 +71,11 @@ func _build_menu() -> void:
 	name_edit.max_length = 16
 	v.add_child(name_edit)
 
+	var solo_btn := Button.new()
+	solo_btn.text = "PLAY SOLO  (vs AI Tung Tung)"
+	solo_btn.pressed.connect(func(): Net.solo(name_edit.text))
+	v.add_child(solo_btn)
+
 	var hrow := HBoxContainer.new()
 	v.add_child(hrow)
 	host_btn = Button.new()
@@ -168,6 +173,12 @@ func _build_menu() -> void:
 	help.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
 	v.add_child(help)
 
+	# Browsers can't host or join over Wi-Fi (no UDP), so the web version is solo only.
+	if OS.has_feature("web"):
+		for n in [hrow, ip_lbl, monster_chk, list_lbl, brow]:
+			n.visible = false
+		help.text = "Browser version = SOLO vs AI. Download the Windows version on itch.io for up to 5-player multiplayer!\n" + help.text.substr(help.text.find("\n") + 1)
+
 
 func _status(t: String) -> void:
 	status_lbl.text = t
@@ -256,6 +267,26 @@ func _smoke_test() -> void:
 		_screenshot(shot)
 		return
 	if mode == "":
+		return
+	if mode == "--smoke-offline":  # the PLAY SOLO button (also what the browser version uses)
+		Mic.set_enabled(false)
+		Net.solo("Tester")
+		await _wait(8.0)
+		print("SMOKE offline: ", game.summary())
+		game._srv("c_noise", game.monster.global_position + Vector3(6, 0, 0), 20.0)
+		await _wait(3.0)
+		print("SMOKE offline after noise: ", game.summary())
+		var p0: Vector3 = game.house.pickups[0]["pos"]
+		game.me().global_position = p0
+		await _wait(0.2)
+		game._srv("c_pickup", 0)
+		await _wait(0.3)
+		print("SMOKE offline pickup0 taken=%s inv=%s" % [str(game.pick_taken[0]), str(game.inv[1])])
+		game.s_caught.rpc(1)
+		await _wait(0.5)
+		print("SMOKE offline caught: alive=%s over=%s" % [str(game.alive), str(game.over)])
+		Net.leave()
+		get_tree().quit()
 		return
 	if mode == "--smoke-solo" or mode == "--smoke-monster":
 		Mic.set_enabled(false)

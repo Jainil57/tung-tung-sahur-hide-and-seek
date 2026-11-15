@@ -2,6 +2,8 @@
 
 ![Tung Tung Sahur: Hide & Seek](docs/thumbnail.png)
 
+### 🎮 [Play it on itch.io](https://jainil-k23.itch.io/tung-tung)
+
 *Tung... tung... tung...* You hear him before you see him.
 
 A **3D first-person multiplayer horror game** made in Godot 4 at **Hack Club Jakarta**.
@@ -48,9 +50,10 @@ give you away too, so sneak, plan your route and stay quiet.
 His abilities unlock as the hunt goes on. Get caught and you become a ghost who can fly through
 walls and watch the others.
 
-## 👥 Multiplayer
+## 👥 Solo & multiplayer
 
-- Up to **5 survivors** on the same Wi-Fi (LAN, port 7777)
+- **Play Solo** against the AI Tung Tung (this is what the browser version on itch.io uses)
+- Up to **5 survivors** on the same Wi-Fi (LAN, port 7777) in the Windows version
 - Tung Tung is controlled by **AI**, or by the **host** for the ultimate betrayal
 - One player clicks **Host Game** and shares the IP shown; everyone else types it and clicks **Join**
 
@@ -58,6 +61,10 @@ walls and watch the others.
 > Windows will ask to allow Godot through the firewall the first time you host: click **Allow**.
 
 ## ▶️ How to run
+
+**Easiest:** play it in your browser or download it from **[itch.io](https://jainil-k23.itch.io/tung-tung)**.
+
+**From the source code:**
 
 1. Install [Godot 4.7](https://godotengine.org/download)
 2. Clone or download this repo

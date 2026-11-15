@@ -70,6 +70,16 @@ func leave() -> void:
 	lobby_changed.emit()
 
 
+## Single player against the AI Tung Tung. Needs no network, so it also works in the browser.
+func solo(player_name: String) -> void:
+	leave()  # leaves an OfflineMultiplayerPeer: we are "the server" with id 1
+	my_name = player_name
+	players = {1: {"name": player_name, "color": COLORS[0]}}
+	settings["monster_player"] = false
+	in_game = true
+	game_started.emit(settings.duplicate())
+
+
 func set_monster_player(v: bool) -> void:
 	if not multiplayer.is_server():
 		return
